@@ -3,60 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>歷史資產泡沫與 AI 基建週期深度研究資料庫</title>
+    <title>歷史資產泡沫與 AI 基建週期深度研究資料庫（嚴謹核實版）</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Chart.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
-        body { font-family: 'Noto Sans TC', sans-serif; background-color: #0f172a; color: #f1f5f9; }
-        .tab-btn.active { background-color: #3b82f6; color: white; border-color: #3b82f6; }
-        .filter-btn.active { background-color: #1e293b; border-color: #60a5fa; color: #60a5fa; }
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap');
+        body { font-family: 'Noto Sans TC', sans-serif; background-color: #0b1120; color: #f8fafc; }
+        .tab-btn.active { background-color: #2563eb; color: white; border-color: #3b82f6; }
+        .filter-btn.active { background-color: #1e293b; border-color: #38bdf8; color: #38bdf8; }
+        .badge { display: inline-flex; align-items: center; padding: 0.15rem 0.5rem; border-radius: 0.375rem; font-size: 0.75rem; font-weight: 500; }
+        .badge-bank { background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.4); }
+        .badge-tech { background: rgba(59, 130, 246, 0.2); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.4); }
+        .badge-raw { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.4); }
+        .badge-ongoing { background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.4); }
     </style>
 </head>
 <body class="min-h-screen flex flex-col">
 
     <!-- 頂部導航列 -->
-    <header class="bg-slate-900 border-b border-slate-800 sticky top-0 z-50 px-6 py-4 flex flex-wrap justify-between items-center shadow-lg">
+    <header class="bg-slate-900/90 backdrop-blur border-b border-slate-800 sticky top-0 z-50 px-6 py-4 flex flex-wrap justify-between items-center shadow-2xl">
         <div class="flex items-center space-x-3">
-            <span class="p-2 bg-blue-600 rounded-lg text-white font-bold text-xl">🏛️</span>
+            <span class="p-2.5 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-xl text-white font-black text-xl shadow-lg">🏛️</span>
             <div>
-                <h1 class="text-xl font-bold tracking-wide text-white">資產泡沫與基建週期研究終端</h1>
-                <p class="text-xs text-slate-400">核實歷史時序 · 泡沫三角模型 · 算力基建演進</p>
+                <h1 class="text-xl font-black tracking-wider text-white">資產泡沫歷史機制與當代 AI 週期觀測終端</h1>
+                <p class="text-xs text-slate-400">中央銀行泡沫三角理論 · 歷史重大危機全要素表列 · 當前 AI 進行式指標核實</p>
             </div>
         </div>
-        <div class="flex items-center space-x-3 mt-2 sm:mt-0">
-            <button onclick="openModal()" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-sm font-medium transition flex items-center gap-1 shadow">
-                <span>➕</span> 新增事件/數據
+        <div class="flex items-center space-x-3 mt-3 sm:mt-0">
+            <button onclick="openModal()" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-xs font-semibold transition flex items-center gap-1.5 shadow-md">
+                <span>➕</span> 新增事件/指標
             </button>
-            <button onclick="exportData()" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg text-sm font-medium border border-slate-700 transition">
-                匯出 JSON
+            <button onclick="exportData()" class="px-3.5 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg text-xs font-medium border border-slate-700 transition">
+                匯出備份 (JSON)
             </button>
-            <label class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg text-sm font-medium border border-slate-700 transition cursor-pointer">
-                匯入 JSON
+            <label class="px-3.5 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg text-xs font-medium border border-slate-700 transition cursor-pointer">
+                匯入還原
                 <input type="file" id="importFile" class="hidden" onchange="importData(event)">
             </label>
         </div>
     </header>
 
     <!-- 主體內容區 -->
-    <main class="flex-grow p-6 max-w-7xl mx-auto w-full space-y-8">
+    <main class="flex-grow p-6 max-w-7xl mx-auto w-full space-y-10">
 
-        <!-- 圖表互動區塊 -->
+        <!-- 央行核心洞見：銀行體系介入度 vs 科技股權型 對比總覽 -->
+        <section class="bg-gradient-to-r from-slate-900 via-indigo-950/40 to-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl space-y-4">
+            <div class="flex items-center gap-2">
+                <span class="text-amber-400 font-bold text-base">⚠️ 核心理論分水嶺（中央銀行經濟研究處）：</span>
+                <span class="text-xs text-slate-300">決定泡沫破滅後是「毀滅性大蕭條」還是「短暫修正並留下基建」的關鍵，在於<b>銀行體系是否深度介入</b>！</span>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                <div class="bg-red-950/20 border border-red-900/50 rounded-xl p-4 space-y-2">
+                    <div class="flex justify-between items-center">
+                        <h4 class="font-bold text-red-400 text-sm">【銀行信貸／不動產型泡沫】（如 1990 日本、2008 美國次貸）</h4>
+                        <span class="badge badge-bank">系統性重創</span>
+                    </div>
+                    <p class="text-slate-300 leading-relaxed">
+                        • <b>融資結構</b>：商業銀行深度放貸、高槓桿房屋抵押、金融衍生品 (MBS/CDO)。<br>
+                        • <b>傳導機制</b>：資產價格崩跌 ➔ 擔保品價值不足 ➔ 銀行巨額壞帳 ➔ 資本適足率吃緊 ➔ 全面信用緊縮。<br>
+                        • <b>實體下場</b>：引發長期資產負債表衰退、數十年通縮或全球性金融海嘯；遺留巨額壞帳沉痾。
+                    </p>
+                </div>
+                <div class="bg-blue-950/20 border border-blue-900/50 rounded-xl p-4 space-y-2">
+                    <div class="flex justify-between items-center">
+                        <h4 class="font-bold text-blue-400 text-sm">【純技術創新／科技股權型】（如 2000 Dot-com、當前 AI 熱潮）</h4>
+                        <span class="badge badge-tech">溫和衰退 + 基建遺產</span>
+                    </div>
+                    <p class="text-slate-300 leading-relaxed">
+                        • <b>融資結構</b>：以股票 IPO、創投基金 (VC)、企業自有營收滾動、科技股權為主，銀行放貸介入低。<br>
+                        • <b>傳導機制</b>：估值過高修正 ➔ 股民與創投承擔損失 ➔ 商業銀行資產負債表健全 ➔ 僅小幅溫和衰退（2001僅衰退8個月）。<br>
+                        • <b>實體下場</b>：過度投資留下的實體光纖、伺服器與資料中心被廉價接盤，孕育出數位經濟繁榮基石。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 圖表量化對比區塊 -->
         <section class="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl">
             <div class="flex flex-wrap justify-between items-center mb-6 gap-4">
                 <div>
                     <h2 class="text-lg font-bold text-white flex items-center gap-2">
-                        <span>📈</span> 歷史資產與週期走勢視覺化
+                        <span>📊</span> 量化指標與資產拋物線對照
                     </h2>
-                    <p class="text-sm text-slate-400" id="chartDesc">點選下方按鈕可即時切換不同的歷史資產拋物線軌跡與量化對照</p>
+                    <p class="text-xs text-slate-400" id="chartDesc">點選切換檢視歷史走勢，特別注意當前 AI 熱潮尚未出現 Dot-com 式拋物線</p>
                 </div>
                 <div class="flex flex-wrap gap-2" id="chartTabs">
-                    <button class="tab-btn active px-3 py-1.5 rounded-lg text-xs font-medium border border-slate-700 transition" onclick="switchChart('cisco')">思科 (1996–2002)</button>
-                    <button class="tab-btn px-3 py-1.5 rounded-lg text-xs font-medium border border-slate-700 transition" onclick="switchChart('rubber1910')">蘭格志橡膠股 (1910)</button>
-                    <button class="tab-btn px-3 py-1.5 rounded-lg text-xs font-medium border border-slate-700 transition" onclick="switchChart('rubber1925')">國際橡膠期貨 (1925)</button>
-                    <button class="tab-btn px-3 py-1.5 rounded-lg text-xs font-medium border border-slate-700 transition" onclick="switchChart('nasdaqCompare')">Dot-com vs. AI (央行對照)</button>
+                    <button class="tab-btn active px-3 py-1.5 rounded-lg text-xs font-medium border border-slate-700 transition" onclick="switchChart('nasdaqCompare')">央行：Dot-com vs. AI 熱潮 (期初=100)</button>
+                    <button class="tab-btn px-3 py-1.5 rounded-lg text-xs font-medium border border-slate-700 transition" onclick="switchChart('cisco')">思科 (1996–2002 全球市值王腰斬)</button>
+                    <button class="tab-btn px-3 py-1.5 rounded-lg text-xs font-medium border border-slate-700 transition" onclick="switchChart('rubber1910')">1910 蘭格志橡皮股票 (27倍暴漲崩盤)</button>
+                    <button class="tab-btn px-3 py-1.5 rounded-lg text-xs font-medium border border-slate-700 transition" onclick="switchChart('rubber1925')">1925 國際橡膠期貨天價危機</button>
+                    <button class="tab-btn px-3 py-1.5 rounded-lg text-xs font-medium border border-slate-700 transition" onclick="switchChart('aiDebt')">美企與全球 AI 發債規模 (2014–2026)</button>
                 </div>
             </div>
 
@@ -66,362 +104,75 @@
             </div>
         </section>
 
-        <!-- 泡沫核心檢索與分類過濾 -->
-        <section class="space-y-4">
-            <div class="flex flex-wrap justify-between items-center gap-4">
-                <div class="flex flex-wrap gap-2">
-                    <button class="filter-btn active px-3 py-1.5 rounded-full text-xs font-medium border border-slate-700 transition" onclick="filterEvents('all')">全部歷史事件</button>
-                    <button class="filter-btn px-3 py-1.5 rounded-full text-xs font-medium border border-slate-700 transition" onclick="filterEvents('科技股權')">科技股權型</button>
-                    <button class="filter-btn px-3 py-1.5 rounded-full text-xs font-medium border border-slate-700 transition" onclick="filterEvents('原物料期貨')">原物料/商品型</button>
-                    <button class="filter-btn px-3 py-1.5 rounded-full text-xs font-medium border border-slate-700 transition" onclick="filterEvents('重資產基建')">重基建與實體型</button>
-                </div>
-                <div class="w-full sm:w-72">
-                    <input type="text" id="searchInput" oninput="searchEvents()" placeholder="搜尋事件、標的、破滅轉折點..." class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-blue-500">
-                </div>
+        <!-- 央行量化指標對照矩陣卡片 (Dot-com 峰值 vs. 當前 AI 現況) -->
+        <section class="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl space-y-4">
+            <div class="flex justify-between items-center">
+                <h3 class="text-base font-bold text-white flex items-center gap-2">
+                    <span>📐</span> 當前 AI 熱潮 vs. 2000 年 Dot-com 泡沫量化指標全貌
+                </h3>
+                <span class="badge badge-ongoing">AI 現況進行式核實</span>
             </div>
-
-            <!-- 事件卡片展示網格 -->
-            <div id="eventsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- 動態注入事件卡片 -->
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-xs border-collapse">
+                    <thead>
+                        <tr class="border-b border-slate-800 text-slate-400">
+                            <th class="py-3 px-4 font-semibold">量化評估面向</th>
+                            <th class="py-3 px-4 font-semibold text-amber-400">2000 年 Dot-com 峰值 (已破滅)</th>
+                            <th class="py-3 px-4 font-semibold text-blue-400">當前 AI 週期現況 (尚未破滅·進行中)</th>
+                            <th class="py-3 px-4 font-semibold">客觀核實結論</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-800/60 text-slate-300">
+                        <tr>
+                            <td class="py-3 px-4 font-medium text-white">那斯達克指數累積漲幅</td>
+                            <td class="py-3 px-4 text-amber-400 font-bold">飆漲 +221.5% (歷時約 550 個交易日)</td>
+                            <td class="py-3 px-4 text-blue-400 font-bold">上漲 +116.4% (ChatGPT問世至今約800日)</td>
+                            <td class="py-3 px-4 text-slate-400">AI 斜率顯著平緩，尚未出現指數型失控飆漲</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 px-4 font-medium text-white">那斯達克本益比 (P/E)</td>
+                            <td class="py-3 px-4 text-amber-400 font-bold">64.9 倍 (部分無獲利公司高達 200 倍)</td>
+                            <td class="py-3 px-4 text-blue-400 font-bold">31.0 倍 (預期本益比約 29.5 倍)</td>
+                            <td class="py-3 px-4 text-slate-400">雖高於歷史均值 (27.8倍)，但遠低於 2000 年極值</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 px-4 font-medium text-white">美股席勒本益比 (CAPE)</td>
+                            <td class="py-3 px-4 text-amber-400">43.2 倍 (歷史最高峰)</td>
+                            <td class="py-3 px-4 text-blue-400">38.9 倍 (歷史高分位)</td>
+                            <td class="py-3 px-4 text-slate-400">整體市場評價偏高，但並未創下極端紀錄</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 px-4 font-medium text-white">企業獲利體質 (盈利能力)</td>
+                            <td class="py-3 px-4 text-amber-400 font-bold">僅 14% 的上市科技公司賺錢 (86%純燒錢)</td>
+                            <td class="py-3 px-4 text-blue-400 font-bold">推動主力 (CSP/晶片巨頭) 現金流極為豐厚</td>
+                            <td class="py-3 px-4 text-slate-400">基本面完全不同：AI 軍備競賽早期由真金白銀營收支撐</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 px-4 font-medium text-white">全球股市市值集中度</td>
+                            <td class="py-3 px-4 text-amber-400">科技股占全球市值 23.7%</td>
+                            <td class="py-3 px-4 text-rose-400 font-bold">已攀升至 27.5% (創歷史新高！)</td>
+                            <td class="py-3 px-4 text-rose-300"><b>重大警訊</b>：指數高度依賴少數權值巨頭，回檔波動風險極大</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 px-4 font-medium text-white">下游企業商業變現狀況</td>
+                            <td class="py-3 px-4 text-amber-400">無流量變現模式，依賴本夢比點閱率</td>
+                            <td class="py-3 px-4 text-amber-300 font-bold">MIT 調查：95% 企業尚未取得實質獲利</td>
+                            <td class="py-3 px-4 text-amber-400"><b>關鍵瓶頸</b>：終端商業變現落後於巨額硬體資本支出</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </section>
 
-    </main>
-
-    <!-- 新增事件彈窗 Modal -->
-    <div id="eventModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm hidden flex items-center justify-center p-4 z-50">
-        <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-lg w-full p-6 space-y-4 shadow-2xl">
-            <h3 class="text-lg font-bold text-white">新增歷史事件 / 週期數據</h3>
-            <form id="eventForm" onsubmit="handleSaveEvent(event)" class="space-y-3">
+        <!-- 歷史各大資產泡沫事件【全要素詳細表列】 -->
+        <section class="space-y-6">
+            <div class="flex flex-wrap justify-between items-center gap-4">
                 <div>
-                    <label class="block text-xs text-slate-400 mb-1">事件名稱</label>
-                    <input type="text" id="modalTitle" required class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500">
+                    <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                        <span>📚</span> 歷史重大資產事件【九大關鍵面向詳細全覽】
+                    </h3>
+                    <p class="text-xs text-slate-400">依據央行報告與歷史文獻，逐項表列起火源、槓桿、熱能、轉折點至實體遺產</p>
                 </div>
-                <div class="grid grid-cols-2 gap-3">
-                    <div>
-                        <label class="block text-xs text-slate-400 mb-1">發生年份/區間</label>
-                        <input type="text" id="modalYear" placeholder="例: 1910 或 1845-1850" required class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500">
-                    </div>
-                    <div>
-                        <label class="block text-xs text-slate-400 mb-1">類型分類</label>
-                        <select id="modalCategory" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500">
-                            <option value="科技股權">科技股權型</option>
-                            <option value="原物料期貨">原物料/商品型</option>
-                            <option value="重資產基建">重基建與實體型</option>
-                            <option value="金融信貸">金融信貸型</option>
-                        </select>
-                    </div>
-                </div>
-                <div>
-                    <label class="block text-xs text-slate-400 mb-1">炒作起火源與核心標的</label>
-                    <input type="text" id="modalSpark" placeholder="例: 福特 Model T 需求 + 蘭格志股票" required class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500">
-                </div>
-                <div>
-                    <label class="block text-xs text-slate-400 mb-1">峰值現象與估值幅度</label>
-                    <input type="text" id="modalPeak" placeholder="例: 股價數月暴漲 27 倍，外資銀行放寬質押" required class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500">
-                </div>
-                <div>
-                    <label class="block text-xs text-slate-400 mb-1">破裂轉折點與出清下場</label>
-                    <textarea id="modalCollapse" rows="2" placeholder="例: 產能預期釋放、期貨雪崩、錢莊連鎖倒閉" required class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500"></textarea>
-                </div>
-                <div>
-                    <label class="block text-xs text-slate-400 mb-1">沉澱的歷史遺產 (應用勝出者)</label>
-                    <input type="text" id="modalLegacy" placeholder="例: 平價橡膠促成 1913 福特流水線汽車繁榮" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500">
-                </div>
-                <div class="flex justify-end space-x-2 pt-2">
-                    <button type="button" onclick="closeModal()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg text-sm transition">取消</button>
-                    <button type="submit" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-sm font-medium transition">儲存並加入</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <script>
-        // 初始預設事件資料庫 (經過嚴謹事實核查)
-        const defaultEvents = [
-            {
-                id: 1,
-                title: "1840s 英國鐵路狂熱 (Railway Mania)",
-                year: "1844–1850",
-                category: "重資產基建",
-                spark: "蒸汽機與軌道技術商用，英國國會授權大量鐵路專利法案",
-                peak: "鐵路指數自 1843 年 100 衝上 1845 年 220（+120%），全民 FOMO 瘋狂搶購",
-                collapse: "英格蘭銀行升息收緊流動性，大量無收益線路爛尾，指數重挫 66%，鐵路大王哈德遜破產",
-                legacy: "留下了覆蓋全英國的高效雙軌鐵路網，將客貨運成本降至原先 1/10"
-            },
-            {
-                id: 2,
-                title: "1910 年橡皮股票風潮 (Rubber Boom)",
-                year: "1909–1910",
-                category: "科技股權",
-                spark: "1908 年福特 Model T 上市催生輪胎爆量預期，炒作東南亞種植園股票",
-                peak: "蘭格志股票從面值 60 兩暴漲至 1,675 兩（27 倍），外資銀行與錢莊大開信貸槓桿",
-                collapse: "生膠期貨自高點崩跌 60%，外資銀行拒收莊票，上海三大錢莊連鎖倒閉引爆金融危機",
-                legacy: "東南亞人工種植園規模化成熟，大幅拉低全球橡膠成本，無縫接軌 1913 福特流水線"
-            },
-            {
-                id: 3,
-                title: "1925 年國際橡膠天價危機",
-                year: "1924–1926",
-                category: "原物料期貨",
-                spark: "英國實施「史蒂文森計劃」人為限產，恰逢福特流水線後美國汽車保有量破 2,000 萬輛",
-                peak: "紐約期貨在短短數月內自 0.20 美元暴衝至 1.21 美元/磅（暴漲逾 5 倍）",
-                collapse: "印尼產能大量背刺擴產，美國胡佛發起全國廢橡膠回收運動，報價雪崩回 0.20 美元",
-                legacy: "迫使美國化學工業投入高分子研發，促成杜邦 1930 年代成功合成氯丁橡膠"
-            },
-            {
-                id: 4,
-                title: "2000 年千禧年網際網路與光纖泡沫",
-                year: "1997–2002",
-                category: "科技股權",
-                spark: "堅信網路流量每百天翻倍，「頻寬為王」，鋪設 3,900 萬英里光纖與瘋搶交換機",
-                peak: "思科 (CSCO) 市值達 5,550 億美元問鼎全球第一，那指在 2000 年 3 月衝上 5,048 點",
-                collapse: "DWDM 密集波分複用技術商用讓單纖容量暴增百倍，97.5% 光纖淪為暗光纖，思科崩跌 89%",
-                legacy: "留下極其廉價的跨洋海底光纖網路，在廢墟上孕育出 Google、AWS、Netflix 等應用巨頭"
-            },
-            {
-                id: 5,
-                title: "2023–2026 AI 算力基建週期",
-                year: "2023–2026",
-                category: "科技股權",
-                spark: "生成式 AI 與大語言模型，資金順著供應鏈炒作 CoWoS、液冷、變壓器與 HBM",
-                peak: "那指累計漲幅約 116%，輝達漲幅逾 10 倍，全球科技股權重高度集中",
-                collapse: "面臨晶片架構 2~3 年短折舊週期考驗，下游商業模式尚未完全覆蓋數千億美元 Capex",
-                legacy: "目前正加速全球算力池與能源電網升級，為下一代 Agentic 生態奠定底座"
-            }
-        ];
-
-        // 圖表數據集合
-        const chartConfigs = {
-            cisco: {
-                title: "思科 Cisco (CSCO) 股價走勢 (1996–2002)",
-                desc: "1996 至 2000 年受惠於網路基建狂潮登頂全球市值王，隨後因頻寬產能過剩暴跌近 90%",
-                labels: ['1996-01', '1997-01', '1998-01', '1999-01', '2000-03 (天價)', '2000-12', '2001-09', '2002-10 (低點)'],
-                datasets: [{
-                    label: '股價 (USD)',
-                    data: [3.4, 6.8, 14.2, 38.5, 80.06, 38.25, 12.18, 8.60],
-                    borderColor: '#3b82f6',
-                    backgroundColor: 'rgba(59, 130, 246, 0.15)',
-                    fill: true,
-                    tension: 0.3
-                }]
-            },
-            rubber1910: {
-                title: "1910 蘭格志橡膠股票 (上海灘拋物線走勢)",
-                desc: "受福特汽車興起刺激與外資信貸推動，面值 60 兩的股票在數月內炒至 1,675 兩後雪崩",
-                labels: ['1909 春', '1909 秋', '1909 冬', '1910-03 (天價)', '1910-06', '1910-08', '1910-10 (崩盤)'],
-                datasets: [{
-                    label: '股價 (白銀兩)',
-                    data: [60, 150, 420, 1675, 950, 310, 180],
-                    borderColor: '#ef4444',
-                    backgroundColor: 'rgba(239, 68, 68, 0.15)',
-                    fill: true,
-                    tension: 0.3
-                }]
-            },
-            rubber1925: {
-                title: "1925 國際天然橡膠現貨/期貨價格走勢 (美元/磅)",
-                desc: "英國史蒂文森政策人為限產撞上福特流水線汽車大普及，引發數倍暴漲後因擴產雪崩",
-                labels: ['1924-01', '1924-07', '1924-12', '1925-07 (峰值)', '1925-12', '1926-06', '1927-01'],
-                datasets: [{
-                    label: '報價 ($/磅)',
-                    data: [0.26, 0.22, 0.20, 1.21, 0.98, 0.42, 0.20],
-                    borderColor: '#10b981',
-                    backgroundColor: 'rgba(16, 185, 129, 0.15)',
-                    fill: true,
-                    tension: 0.3
-                }]
-            },
-            nasdaqCompare: {
-                title: "央行研究報告：Dot-com 泡沫 vs. 當前 AI 熱潮走勢對照 (基期=100)",
-                desc: "Dot-com 泡沫歷時 1,160 交易日，峰值漲幅達 221.5%；AI 熱潮目前累計漲幅約 116%，斜率相對平緩",
-                labels: ['T=0 (起點)', 'T+200', 'T+400', 'T+550 (Dotcom峰值)', 'T+800 (AI當前)', 'T+1000', 'T+1160 (出清底點)'],
-                datasets: [
-                    {
-                        label: 'Dot-com 軌跡 (1997-2002)',
-                        data: [100, 142, 210, 321.5, 185, 130, 99.4],
-                        borderColor: '#f59e0b',
-                        borderDash: [5, 5],
-                        fill: false,
-                        tension: 0.3
-                    },
-                    {
-                        label: '當前 AI 週期 (2022 迄今)',
-                        data: [100, 135, 168, null, 216.4, null, null],
-                        borderColor: '#6366f1',
-                        fill: false,
-                        tension: 0.3
-                    }
-                ]
-            }
-        };
-
-        let myChart = null;
-        let currentEvents = [];
-
-        // 初始化圖表
-        function initChart(key) {
-            const ctx = document.getElementById('trendChart').getContext('2d');
-            const cfg = chartConfigs[key];
-            document.getElementById('chartDesc').innerText = cfg.desc;
-
-            if (myChart) myChart.destroy();
-
-            myChart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: cfg.labels,
-                    datasets: cfg.datasets
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: { labels: { color: '#cbd5e1' } },
-                        title: { display: true, text: cfg.title, color: '#f8fafc', font: { size: 15, weight: 'bold' } }
-                    },
-                    scales: {
-                        x: { ticks: { color: '#94a3b8' }, grid: { color: '#1e293b' } },
-                        y: { ticks: { color: '#94a3b8' }, grid: { color: '#1e293b' } }
-                    }
-                }
-            });
-        }
-
-        // 切換圖表標籤
-        function switchChart(key) {
-            document.querySelectorAll('#chartTabs .tab-btn').forEach(b => b.classList.remove('active'));
-            event.target.classList.add('active');
-            initChart(key);
-        }
-
-        // 載入事件資料
-        function loadEvents() {
-            const saved = localStorage.getItem('bubble_research_events');
-            if (saved) {
-                currentEvents = JSON.parse(saved);
-            } else {
-                currentEvents = defaultEvents;
-                localStorage.setItem('bubble_research_events', JSON.stringify(defaultEvents));
-            }
-            renderEvents(currentEvents);
-        }
-
-        // 渲染事件卡片
-        function renderEvents(list) {
-            const grid = document.getElementById('eventsGrid');
-            grid.innerHTML = '';
-
-            list.forEach(item => {
-                const card = document.createElement('div');
-                card.className = "bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-slate-700 transition shadow-lg space-y-3 relative";
-                card.innerHTML = `
-                    <div class="flex justify-between items-start">
-                        <span class="text-xs px-2.5 py-1 rounded bg-blue-900/60 text-blue-300 font-medium">${item.category} · ${item.year}</span>
-                        <button onclick="deleteEvent(${item.id})" class="text-slate-500 hover:text-red-400 text-xs transition">刪除</button>
-                    </div>
-                    <h3 class="text-base font-bold text-white">${item.title}</h3>
-                    <div class="space-y-1.5 text-xs text-slate-300 leading-relaxed">
-                        <p><strong class="text-amber-400">🔥 起火源/標的：</strong>${item.spark}</p>
-                        <p><strong class="text-rose-400">📈 估值巔峰：</strong>${item.peak}</p>
-                        <p><strong class="text-blue-400">⚡ 破滅轉折：</strong>${item.collapse}</p>
-                        ${item.legacy ? `<p><strong class="text-emerald-400">🌱 沉澱遺產：</strong>${item.legacy}</p>` : ''}
-                    </div>
-                `;
-                grid.appendChild(card);
-            });
-        }
-
-        // 事件篩選
-        function filterEvents(category) {
-            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-            event.target.classList.add('active');
-            if (category === 'all') {
-                renderEvents(currentEvents);
-            } else {
-                renderEvents(currentEvents.filter(e => e.category === category));
-            }
-        }
-
-        // 關鍵字搜尋
-        function searchEvents() {
-            const q = document.getElementById('searchInput').value.toLowerCase();
-            const filtered = currentEvents.filter(e => 
-                e.title.toLowerCase().includes(q) || 
-                e.spark.toLowerCase().includes(q) || 
-                e.collapse.toLowerCase().includes(q)
-            );
-            renderEvents(filtered);
-        }
-
-        // Modal 相關
-        function openModal() { document.getElementById('eventModal').classList.remove('hidden'); }
-        function closeModal() { document.getElementById('eventModal').classList.add('hidden'); }
-
-        function handleSaveEvent(e) {
-            e.preventDefault();
-            const newEvent = {
-                id: Date.now(),
-                title: document.getElementById('modalTitle').value,
-                year: document.getElementById('modalYear').value,
-                category: document.getElementById('modalCategory').value,
-                spark: document.getElementById('modalSpark').value,
-                peak: document.getElementById('modalPeak').value,
-                collapse: document.getElementById('modalCollapse').value,
-                legacy: document.getElementById('modalLegacy').value
-            };
-            currentEvents.unshift(newEvent);
-            localStorage.setItem('bubble_research_events', JSON.stringify(currentEvents));
-            renderEvents(currentEvents);
-            closeModal();
-            document.getElementById('eventForm').reset();
-        }
-
-        function deleteEvent(id) {
-            if (confirm('確定要刪除這筆研究事件嗎？')) {
-                currentEvents = currentEvents.filter(e => e.id !== id);
-                localStorage.setItem('bubble_research_events', JSON.stringify(currentEvents));
-                renderEvents(currentEvents);
-            }
-        }
-
-        // 匯出 JSON
-        function exportData() {
-            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(currentEvents, null, 2));
-            const downloadAnchor = document.createElement('a');
-            downloadAnchor.setAttribute("href", dataStr);
-            downloadAnchor.setAttribute("download", "bubble_research_database.json");
-            document.body.appendChild(downloadAnchor);
-            downloadAnchor.click();
-            downloadAnchor.remove();
-        }
-
-        // 匯入 JSON
-        function importData(event) {
-            const file = event.target.files[0];
-            if (!file) return;
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                try {
-                    const imported = JSON.parse(e.target.result);
-                    if (Array.isArray(imported)) {
-                        currentEvents = imported;
-                        localStorage.setItem('bubble_research_events', JSON.stringify(currentEvents));
-                        renderEvents(currentEvents);
-                        alert('成功匯入資料庫！');
-                    }
-                } catch(err) {
-                    alert('匯入格式錯誤，請提供正確的 JSON 格式！');
-                }
-            };
-            reader.readAsText(file);
-        }
-
-        // 頁面加載初始化
-        window.onload = function() {
-            initChart('cisco');
-            loadEvents();
-        };
-    </script>
-</body>
-</html>
+                <div class="flex flex-wrap gap-2">
+                    <button class="filter-btn active px-3 py-1.5 rounded-full text-xs font-medium border border-slate-700 transition" onclick="filterEvents('all')">全部檢視</button>
+                    <button class="filter-btn px-3 py-1.5 rounded-full text-xs font-medium border border-slate-700 transition" onclick="filterEvents('科技創新')">科技創新型</button>
