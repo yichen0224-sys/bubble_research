@@ -1,2 +1,2 @@
 # bubble_research
- database of bubble in history for tracking AI bubble status
+ database of infrastructure bubble in history for tracking AI bubble status
